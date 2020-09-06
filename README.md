@@ -12,6 +12,7 @@ docker pull pramod2107/mytomcat:devops
 - docker run -d -p 9191:8080 pramod2107/mytomcat:devops 
 - Visit port <local_ip>:9191
 <br>  
+
 - docker run -it pramod2107/mytomcat:devops bash
 - netstat -tnlp
 - telnet
