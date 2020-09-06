@@ -1,0 +1,91 @@
+docker pull tomcat
+docker images
+
+#Installing softwares
+
+#Method-1 Using Commit
+
+docker run -it tomcat bash
+	apt-get update
+	apt-get install net-tools
+	netstat -tnlp
+	apt-get install telnet
+	apt-get install vim
+	vim demo.txt
+	apt-get install curl
+	curl www.google.com
+docker ps -l or docker ps -a (And copy the ID of container)
+docker commit 5d41b154aabd mytomcat
+
+
+
+
+
+
+
+#Method 2 using Dockerfile
+
+vim Dockerfile
+
+
+
+FROM tomcat:9.0
+
+LABEL MAINTAINER="PRAMOD KUMAR pramodrana2107@gmail.com"
+
+#Method-1 We can install packages manually and make them persistent using commit.
+#Method-2 Using Dockerfile which i am using currently.
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get -y update && apt-get install -y apt-utils
+RUN apt-get -y install net-tools
+RUN apt-get -y install telnet
+RUN apt-get -y install curl
+RUN apt-get -y install vim
+
+#Tomcat 9.0 runs through webapps.dist so i have to copy them in /webapps or link them to/webapps i have linked it.
+RUN ln -s /usr/local/tomcat/webapps.dist/manager webapps/manager
+RUN ln -s /usr/local/tomcat/webapps.dist/host-manager webapps/host-manager
+RUN ln -s /usr/local/tomcat/webapps.dist/ROOT webapps/ROOT
+
+#Downloading and moving sample.war file to hosting folder
+ADD https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+
+#Setting Environment Variables
+ENV role=app
+ENV env=dev
+ENV name=PRAMOD
+
+#Setting webapps as login dir
+WORKDIR cd /usr/local/tomcat/webapps/
+
+#Giving execution permissions to catalina.sh
+CMD chmod +x /usr/local/tomcat/bin/catalina.sh
+CMD ["catalina.sh","run"]
+
+
+
+
+
+#Building Image
+docker build -t mytomcat:devops .
+
+#Running Server
+docker run -d -p 9191:8080 mytomcat
+http://192.168.43.89:9191/	(Fetching from server successful)
+docker run -it mytomcat:devops bash   (Login dir is webapps/)
+printenv name
+
+#Tagging
+docker tag mytomcat:devops pramod2107/mytomcat:devops
+docker run -it pramod2107/mytomcat:devops bash
+
+Dockerhub Login:-
+docker login --username=pramod2107
+
+docker push pramod2107/mytomcat:devops
+
+	
+	
