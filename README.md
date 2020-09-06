@@ -1,7 +1,7 @@
 # Devops
 
 ## Dockerhub Image Link
-<a href="docker pull pramod2107/mytomcat:devops">Click here -> Tomcat Docker Image</a>
+<a href="https://hub.docker.com/r/pramod2107/mytomcat/tags">Click here -> Tomcat Docker Image</a>
                         or
 docker pull pramod2107/mytomcat:devops
 
@@ -14,6 +14,7 @@ docker pull pramod2107/mytomcat:devops
 <br>  
 
 - docker run -it pramod2107/mytomcat:devops bash
+- printenv name
 - netstat -tnlp
 - telnet
 - curl www.google.com
