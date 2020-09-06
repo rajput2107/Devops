@@ -14,6 +14,7 @@ docker pull pramod2107/mytomcat:devops
 <br>  
 
 - docker run -it pramod2107/mytomcat:devops bash
+- printenv name
 - netstat -tnlp
 - telnet
 - curl www.google.com
