@@ -1,7 +1,7 @@
-# Devops
+# Devops  &nbsp; &nbsp; <code><a href="https://hub.docker.com/repositories" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/devto/devto-ar21.svg"></a></code>
 ## Requirements:
-- Docker
-- Linux
+<code><a href="https://www.docker.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/docker/docker-official.svg"></a></code>
+<code><a href="https://www.linux.org/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/linux/linux-ar21.svg"></a></code>
 
 ## Start Docker Services
 - systemctl start docker
